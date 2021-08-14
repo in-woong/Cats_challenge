@@ -12,9 +12,6 @@ const Navigation = () => {
       <li>
         <Link to="/favorite">Favorite</Link>
       </li>
-      <li>
-        <Link to="/cat/:id">Detail</Link>
-      </li>
     </ul>
   );
 };

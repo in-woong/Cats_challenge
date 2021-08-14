@@ -1,0 +1,19 @@
+div.Cats {
+  div.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+
+    div.Cat {
+        
+      Link.name {
+        position: absolute;
+        left:10px;
+      }
+
+      .Image {
+        position:relative;
+        width: 100px;
+      }
+    }
+  }
+}
