@@ -12,6 +12,7 @@ import {useLocalStorage} from '../hooks/useLocalStorage';
 const Cats = () => {
   const [storedBreeds, storeBreeds] = useLocalStorage('breeds', []);
   const [storedPages, storePages] = useLocalStorage('fetchedPgaes', []);
+  const [like, setLike] = useLocalStorage('likes', [])
   const [currentPage, setCurrentPage] = useState(
     storedPages.length !== 0 ? storedPages[storedPages.length - 1] : 1
   );
@@ -91,7 +92,7 @@ const Cats = () => {
                 <Link className="name" to={`/cat/${breed.id}`}>
                   {breed.name}
                 </Link>
-                <button onClick={()=>({})}>Like</button>
+                <button onClick={()=>setLike(like.concat(`${breed.id}`))}>Like</button>
               </div>
             ))}
           </div>
