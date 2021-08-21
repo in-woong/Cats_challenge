@@ -4,14 +4,18 @@ div.Cats {
     grid-template-columns: repeat(auto-fill, minmax(20%, auto));
 
     div.Cat {
+      background-size: 300px;
+      width: 300px;
+      height: 150px;
+      border: 2px solid;
+      color: pink;
         
       Link.name {
-        position: absolute;
         left:10px;
       }
 
       .Image {
-        position:relative;
+    
         width: 100px;
       }
     }

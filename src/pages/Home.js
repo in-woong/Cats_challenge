@@ -15,7 +15,7 @@ const Cats = () => {
   const [currentPage, setCurrentPage] = useState(
     storedPages.length !== 0 ? storedPages[storedPages.length - 1] : 1
   );
-  console.log(typeof storedPages);
+  
   const params = useMemo(
     () => ({
       page: currentPage,
@@ -23,6 +23,7 @@ const Cats = () => {
     }),
     [currentPage]
   );
+
   const {
     data: breeds,
     isLoading,
@@ -86,11 +87,7 @@ const Cats = () => {
 
           <div className="container">
             {breeds.map((breed, index) => (
-              <div className="Cat" key={`${breed.id}-${index}`}>
-                <img
-                  className="Image"
-                  src={breed.image ? breed.image.url : null}
-                />
+              <div className="Cat" key={`${breed.id}-${index}`}  style={{backgroundImage: `url(${breed.image ? breed.image.url : null})`}}>
                 <Link className="name" to={`/cat/${breed.id}`}>
                   {breed.name}
                 </Link>
