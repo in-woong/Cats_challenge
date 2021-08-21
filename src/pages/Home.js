@@ -12,11 +12,11 @@ import {useLocalStorage} from '../hooks/useLocalStorage';
 const Cats = () => {
   const [storedBreeds, storeBreeds] = useLocalStorage('breeds', []);
   const [storedPages, storePages] = useLocalStorage('fetchedPgaes', []);
-  const [like, setLike] = useLocalStorage('likes', [])
+  const [like, setLike] = useLocalStorage('likes', []);
   const [currentPage, setCurrentPage] = useState(
     storedPages.length !== 0 ? storedPages[storedPages.length - 1] : 1
   );
-  
+
   const params = useMemo(
     () => ({
       page: currentPage,
@@ -88,11 +88,25 @@ const Cats = () => {
 
           <div className="container">
             {breeds.map((breed, index) => (
-              <div className="Cat" key={`${breed.id}-${index}`}  style={{backgroundImage: `url(${breed.image ? breed.image.url : null})`}}>
+              <div
+                className="Cat"
+                key={`${breed.id}-${index}`}
+                style={{
+                  backgroundImage: `url(${
+                    breed.image ? breed.image.url : null
+                  })`,
+                }}
+              >
                 <Link className="name" to={`/cat/${breed.id}`}>
                   {breed.name}
                 </Link>
-                <button onClick={()=>setLike(like.concat(`${breed.id}`))}>Like</button>
+                <button
+                  onClick={() =>
+                    like&&!like.includes(breed.id)&&setLike(like.concat(`${breed.id}`))
+                  }
+                >
+                  Like
+                </button>
               </div>
             ))}
           </div>
